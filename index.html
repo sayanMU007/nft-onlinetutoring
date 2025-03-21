@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutorChain - NFT Tutoring Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>TutorChain</h1>
+                    <p>Learn with verified experts through NFT sessions</p>
+                </div>
+                <div class="wallet-connect">
+                    <button id="connectWallet" class="btn-connect">Connect Wallet</button>
+                    <div id="walletInfo" class="wallet-info">
+                        <span id="walletAddress">Not connected</span>
+                        <div class="verification-badge" id="verificationBadge">
+                            <span id="verificationStatus">Unverified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Turn knowledge into opportunity</h2>
+                    <p>Create or book tutoring sessions as NFTs, with secure blockchain payments and verification.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tabs-container">
+            <div class="container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="available">Available Sessions</button>
+                    <button class="tab-btn" data-tab="create">Create Session</button>
+                    <button class="tab-btn" data-tab="booked">Your Bookings</button>
+                    <button class="tab-btn" data-tab="mytutoring">Your Tutoring</button>
+                </div>
+
+                <div id="availableTab" class="tab-content active">
+                    <div class="filter-controls">
+                        <div class="search-bar">
+                            <input type="text" id="sessionSearch" placeholder="Search by subject...">
+                        </div>
+                        <div class="filter-dropdown">
+                            <select id="subjectFilter">
+                                <option value="">All Subjects</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Languages">Languages</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="availableSessions" class="sessions-grid">
+                        <!-- Available sessions will be populated here by JavaScript -->
+                    </div>
+                </div>
+
+                <div id="createTab" class="tab-content">
+                    <h3>Create a Tutoring Session NFT</h3>
+                    <form id="createSessionForm">
+                        <div class="form-group">
+                            <label for="sessionSubject">Subject</label>
+                            <input type="text" id="sessionSubject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionPrice">Price (ETH)</label>
+                            <input type="number" id="sessionPrice" step="0.001" min="0.001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionDuration">Duration (minutes)</label>
+                            <input type="number" id="sessionDuration" min="15" step="15" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionDescription">Description</label>
+                            <textarea id="sessionDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessionImage">Image URL</label>
+                            <input type="url" id="sessionImage" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <button type="submit" class="btn-primary">Create Session NFT</button>
+                    </form>
+                </div>
+
+                <div id="bookedTab" class="tab-content">
+                    <h3>Your Booked Sessions</h3>
+                    <div id="bookedSessions" class="sessions-list">
+                        <!-- Booked sessions will be populated here by JavaScript -->
+                    </div>
+                </div>
+
+                <div id="myTutoringTab" class="tab-content">
+                    <h3>Your Tutoring Sessions</h3>
+                    <div id="myTutoringSessions" class="sessions-list">
+                        <!-- User's tutoring sessions will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Session Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Book Tutoring Session</h3>
+            <div id="sessionDetails" class="session-details">
+                <!-- Session details will be populated here -->
+            </div>
+            <form id="bookingForm">
+                <input type="hidden" id="bookingTokenId">
+                <div class="form-group">
+                    <label for="bookingDate">Select Date</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Select Time</label>
+                    <input type="time" id="bookingTime" required>
+                </div>
+                <div class="price-summary">
+                    <p>Session Price: <span id="bookingPrice">0 ETH</span></p>
+                    <p class="small">Platform fee (5%): <span id="platformFee">0 ETH</span></p>
+                    <p class="total">Total: <span id="totalPrice">0 ETH</span></p>
+                </div>
+                <button type="submit" class="btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TutorChain - NFT Tutoring Marketplace</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
