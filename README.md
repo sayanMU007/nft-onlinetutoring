@@ -77,5 +77,6 @@ The NFT On-chain Tutoring Service has significant potential for expansion:
 
 
 
-![Screenshot 2025-03-20 155059](https://github.com/user-attachments/assets/94897b44-07f3-481f-a436-b8b74d84b89c)
+![Screenshot (37)](https://github.com/user-attachments/assets/a9bdd098-65b3-4948-98b6-0402f064bad7)
+
 
